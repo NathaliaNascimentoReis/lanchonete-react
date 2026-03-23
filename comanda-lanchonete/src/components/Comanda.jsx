@@ -6,15 +6,15 @@ function Comanda({ pedidos }) {
         return acc + item.precoUnitario * item.quantidade;
     }, 0);
 
+    const valorTaxado = valorTotal + (valorTotal * 0.1);
+
     return (
         <>
             <div className={styles.recibo}>
-                /* O conteúdo visual da comanda entrará aqui */
                 <div className={styles.cabecalho}>
                     <h2>🧾 Resumo do Pedido</h2>
                 </div>
                 <ul className={styles.lista}>
-                    // lista será renderizada
                     {pedidos.map((item) => {
                         const subtotalItem = item.precoUnitario * item.quantidade;
 
@@ -32,7 +32,7 @@ function Comanda({ pedidos }) {
                 <hr className={styles.linhaDivisoria}></hr>
                 <div className={styles.totalDiv}>
                     <span>Total a Pagar:</span>
-                    <span className={styles.valorTotal}>R${valorTotal.toFixed(2)}</span>
+                    <span className={styles.valorTotal}>R${valorTaxado.toFixed(2)}</span>
                 </div>
             </div>
         </>
